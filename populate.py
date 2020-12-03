@@ -89,3 +89,4 @@ for drop in data3:
     cursor1.execute(doInsert, data_tuple)
 cursor1.execute("SELECT * FROM drops;")
 print(cursor1.fetchall())
+connection.commit()
