@@ -14,6 +14,7 @@ create2 = "CREATE TABLE IF NOT EXISTS item(Item_name TEXT PRIMARY KEY," \
           "combat_item BOOLEAN);"
 create3 = "CREATE TABLE IF NOT EXISTS drops(" \
           "dropRate INTEGER," \
+          "value INTEGER," \
           "Monster_name TEXT," \
           "Item_name TEXT, " \
           "FOREIGN KEY(Monster_name) REFERENCES monster(Monster_name), " \

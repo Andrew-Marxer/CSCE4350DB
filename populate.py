@@ -59,33 +59,33 @@ cursor1.execute("SELECT * FROM item;")
 print(cursor1.fetchall())
 #drops -- relation between monster and item'
 
-data3 = [(75, "Vorkath", "Dragon Platelegs/plateskirt"),
-         (50, "Vorkath", "Vorkath Head"),
-         (5000, "Vorkath", "Draconic Visage"),
-         (5000, "Vorkath", "Skeletal Visage"),
-         (370, "Vorkath", "Onyx bolt tips"),
-         (128, "Dagganoth Rex", "Berserker's Ring"),
-         (128, "Dagganoth Rex", "Warrior's Ring"),
-         (128, "Dagganoth Supreme", "Archer's Ring"),
-         (514, "Alchemical Hydra", "Hydra Leather"),
-         (1000, "Alchemical Hydra", "Hydra Claw"),
-         (343, "Nightmare of Ashihama", "Inquisitor's helm"),
-         (343, "Nightmare of Ashihama", "Inquisitor's hauberk"),
-         (343, "Nightmare of Ashihama", "Inquisitor's plateskirt"),
-         (686, "Nightmare of Ashihama", "Inquisitor's mace"),
-         (1029, "Nightmare of Ashihama", "Eldritch orb"),
-         (1029, "Nightmare of Ashihama", "Harmonized orb"),
-         (1029, "Nightmare of Ashihama", "Volatile orb"),
-         (300, "Demonic Gorilla", "Zenyte shard"),
-         (300, "Demonic Gorilla", "Monkey tail"),
-         (612, "Zulrah", "Tanzanite fang"),
-         (612, "Zulrah", "Magic fang"),
-         (612, "Zulrah", "Serpentine visage"),
-         (612, "Zulrah", "Uncut onyx")]
+data3 = [(75, 161300, "Vorkath", "Dragon Platelegs/plateskirt"),
+         (50, 0, "Vorkath", "Vorkath Head"),
+         (5000, 4100000, "Vorkath", "Draconic Visage"),
+         (5000, 14600000, "Vorkath", "Skeletal Visage"),
+         (370, 250000, "Vorkath", "Onyx bolt tips"),
+         (128, 2500000, "Dagganoth Rex", "Berserker's Ring"),
+         (128, 26600, "Dagganoth Rex", "Warrior's Ring"),
+         (128, 4500000, "Dagganoth Supreme", "Archer's Ring"),
+         (514, 5800000, "Alchemical Hydra", "Hydra Leather"),
+         (1000, 59300000, "Alchemical Hydra", "Hydra Claw"),
+         (343, 162000000, "Nightmare of Ashihama", "Inquisitor's helm"),
+         (343, 302300000, "Nightmare of Ashihama", "Inquisitor's hauberk"),
+         (343, 302200000, "Nightmare of Ashihama", "Inquisitor's plateskirt"),
+         (686, 764100000, "Nightmare of Ashihama", "Inquisitor's mace"),
+         (1029, 102300000, "Nightmare of Ashihama", "Eldritch orb"),
+         (1029, 1100000000, "Nightmare of Ashihama", "Harmonized orb"),
+         (1029, 182200000, "Nightmare of Ashihama", "Volatile orb"),
+         (300, 10800000, "Demonic Gorilla", "Zenyte shard"),
+         (300, 438400, "Demonic Gorilla", "Monkey tail"),
+         (612, 3100000, "Zulrah", "Tanzanite fang"),
+         (612, 2900000, "Zulrah", "Magic fang"),
+         (612, 2900000, "Zulrah", "Serpentine visage"),
+         (612, 1400000, "Zulrah", "Uncut onyx")]
 
 for drop in data3:
-    doInsert = """INSERT INTO drops(dropRate, Monster_name, Item_name) VALUES (?,?,?);"""
-    data_tuple = (drop[0], drop[1], drop[2])
+    doInsert = """INSERT INTO drops(dropRate, value, Monster_name, Item_name) VALUES (?,?,?,?);"""
+    data_tuple = (drop[0], drop[1], drop[2], drop[3])
     cursor1.execute(doInsert, data_tuple)
 cursor1.execute("SELECT * FROM drops;")
 print(cursor1.fetchall())
