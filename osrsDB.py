@@ -15,23 +15,20 @@ def search():
     cursor1 = connection.cursor()
 
     result = ""
-    result_label = Label(root, text="")
+    result_label['text'] = ""
     result_label.grid(row=3, column=1, pady=20)
-    clear_label(result_label)
     cursor1.execute("""SELECT * FROM drops NATURAL JOIN monster WHERE monster.Monster_name = ?""",[monster_name.get()])
     records = cursor1.fetchall()
 
     for record in records:
-        result += "Item: " +record[2]+"  Drop Rate: 1/"+str(record[0]) + '\n'
+        result += "Item: " +str(record[3])+"  Drop Rate: 1/"+str(record[0]) + " Item Price: " + str(record[1]) + '\n'
 
-    result_label = Label(root, text = result)
-    result_label.grid(row = 3, column = 1,pady = 20)
+    result_label['text'] = result
+
 
     connection.commit()
     connection.close()
     return
-def clear_label(lbl):
-    lbl['text'] = ""
 
 
 monster_name = Entry(root, width = 50)
@@ -41,6 +38,9 @@ monster_name_label = Label(root, text = "Enter Monster Name")
 monster_name_label.grid(row = 0, column = 1)
 searchButton = Button(root, text = "Click here to perform query", command = search)
 searchButton.grid(row = 2, column = 1)
+
+result_label = Label(root, text = "")
+result_label.grid(row=3, column=1, pady=20)
 
 
 
