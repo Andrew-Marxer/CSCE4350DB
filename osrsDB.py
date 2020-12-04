@@ -11,9 +11,22 @@ root = Tk()
 root.title("Old School Runescape Monster Database")
 root.geometry('800x800')
 def search():
+    connection = sqlite3.connect("osrs.db")
+    cursor1 = connection.cursor()
+    cursor1.execute("""SELECT * FROM drops NATURAL JOIN monster WHERE monster.Monster_name = ?""",[monster_name.get()])
+    records = cursor1.fetchall()
+    result = ""
+    for record in records:
+        result += "Drop Rate: 1/"+str(record[0]) + '\n'
+
+    result_label = Label(root, text = result)
+    result_label.grid(row = 3, column = 1,)
+
+    connection.commit()
+    connection.close()
     return
 
-monster_name = Entry(root,width = 50)
+monster_name = Entry(root, width = 50)
 monster_name.grid(row = 1, column = 1, columnspan = 2, padx = 20)
 
 monster_name_label = Label(root, text = "Enter Monster Name")
