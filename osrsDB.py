@@ -17,7 +17,7 @@ def search():
     records = cursor1.fetchall()
     result = ""
     for record in records:
-        result += "Drop Rate: 1/"+str(record[0]) + '\n'
+        result += "Item: " +record[2]+"  Drop Rate: 1/"+str(record[0]) + '\n'
 
     result_label = Label(root, text = result)
     result_label.grid(row = 3, column = 1,)
