@@ -7,40 +7,31 @@ connection = sqlite3.connect("osrs.db")
 cursor1 = connection.cursor()
 cursor1.execute("SELECT Monster_name FROM monster;")
 names = cursor1.fetchall()
-print(names)
-cursor1.execute("SELECT Item_name FROM item;")
-iNames = cursor1.fetchall()
-class App(tk.Frame):
-    def __init__(self,master=None):
-        Frame.__init__(self,master)
-        self.master = master
-
-        menu = Menu(self.master)
-        self.master.config(menu=menu)
-
-        monsterMenu = Menu(menu)
-        menu.add_cascade(label = "Monsters", menu=monsterMenu,)
-        for mName in names:
-             monsterMenu.add_command(label = mName)
-
-        itemMenu = Menu(menu)
-        menu.add_cascade(label = "Items", menu = itemMenu)
-        for iName in iNames:
-            itemMenu.add_command(label = iName)
-
-
-
-
-
-
-
-
-
 root = Tk()
-osrsDB = App(root)
+root.title("Old School Runescape Monster Database")
+root.geometry('800x800')
+def search():
+    return
 
-osrsDB.master.title("Old School Runescape Monster Database")
-osrsDB.master.maxsize(1000,800)
+monster_name = Entry(root,width = 50)
+monster_name.grid(row = 1, column = 1, columnspan = 2, padx = 20)
 
-osrsDB.mainloop()
+monster_name_label = Label(root, text = "Enter Monster Name")
+monster_name_label.grid(row = 0, column = 1)
+searchButton = Button(root, text = "Click here to perform query", command = search)
+searchButton.grid(row = 2, column = 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+root.mainloop()
 
